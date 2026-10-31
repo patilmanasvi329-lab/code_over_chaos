@@ -1,0 +1,1356 @@
+/* ==========================================================================
+   STARK INDUSTRIES // MARK-85 QUANTUM SCIENTIFIC CALCULATOR HUD
+   Marvel-themed Cybernetic Interface Stylesheet
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   THEME PALETTES & CSS CUSTOM PROPERTIES
+   -------------------------------------------------------------------------- */
+:root {
+  /* Default: Iron Man (Mark 85) */
+  --bg-primary: #0a0d14;
+  --bg-secondary: #121824;
+  --bg-panel: rgba(18, 24, 36, 0.85);
+  --bg-display: #080b10;
+  --text-main: #f0f4f8;
+  --text-dim: #7a889b;
+  --accent-primary: #00f0ff;       /* Repulsor Cyan Glow */
+  --accent-secondary: #f5c518;     /* Stark Gold */
+  --accent-danger: #ff2a44;        /* Arc Overload Red */
+  --accent-op: #e62429;            /* Iron Man Armor Red */
+  --accent-glow: rgba(0, 240, 255, 0.45);
+  --border-hud: rgba(0, 240, 255, 0.25);
+  --btn-num-bg: rgba(22, 30, 46, 0.7);
+  --btn-num-hover: rgba(30, 44, 68, 0.9);
+  --btn-func-bg: rgba(14, 21, 33, 0.75);
+  --btn-func-color: #00f0ff;
+  --reactor-core-color: #00f0ff;
+  --reactor-outer: #f5c518;
+  --grid-color: rgba(0, 240, 255, 0.04);
+  --font-hud: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sub: 'Rajdhani', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+
+/* WAKANDA PROTOCOL (Black Panther) */
+[data-theme="wakanda"] {
+  --bg-primary: #06040a;
+  --bg-secondary: #0f0a1c;
+  --bg-panel: rgba(18, 12, 32, 0.88);
+  --bg-display: #07040d;
+  --text-main: #f5f3ff;
+  --text-dim: #9d8fb8;
+  --accent-primary: #b347eb;       /* Vibranium Kinetic Purple */
+  --accent-secondary: #d946ef;     /* Violet Discharge */
+  --accent-danger: #f43f5e;
+  --accent-op: #9333ea;
+  --accent-glow: rgba(179, 71, 235, 0.5);
+  --border-hud: rgba(179, 71, 235, 0.3);
+  --btn-num-bg: rgba(26, 17, 46, 0.7);
+  --btn-num-hover: rgba(43, 27, 77, 0.9);
+  --btn-func-bg: rgba(19, 13, 36, 0.75);
+  --btn-func-color: #d8b4fe;
+  --reactor-core-color: #c084fc;
+  --reactor-outer: #818cf8;
+  --grid-color: rgba(179, 71, 235, 0.05);
+}
+
+/* THOR PROTOCOL (God of Thunder) */
+[data-theme="thor"] {
+  --bg-primary: #050a12;
+  --bg-secondary: #0d1624;
+  --bg-panel: rgba(14, 25, 42, 0.85);
+  --bg-display: #040910;
+  --text-main: #f0f9ff;
+  --text-dim: #7dd3fc;
+  --accent-primary: #38bdf8;       /* Lightning Cyan */
+  --accent-secondary: #fbbf24;     /* Asgardian Bifrost Gold */
+  --accent-danger: #f87171;
+  --accent-op: #0284c7;
+  --accent-glow: rgba(56, 189, 248, 0.55);
+  --border-hud: rgba(56, 189, 248, 0.3);
+  --btn-num-bg: rgba(17, 32, 54, 0.75);
+  --btn-num-hover: rgba(26, 49, 82, 0.9);
+  --btn-func-bg: rgba(12, 22, 38, 0.8);
+  --btn-func-color: #7dd3fc;
+  --reactor-core-color: #38bdf8;
+  --reactor-outer: #fbbf24;
+  --grid-color: rgba(56, 189, 248, 0.05);
+}
+
+/* THANOS PROTOCOL (Infinity Gauntlet) */
+[data-theme="thanos"] {
+  --bg-primary: #0d0714;
+  --bg-secondary: #190e28;
+  --bg-panel: rgba(28, 16, 46, 0.85);
+  --bg-display: #08040d;
+  --text-main: #fae8ff;
+  --text-dim: #d8b4fe;
+  --accent-primary: #eab308;       /* Gauntlet Gold */
+  --accent-secondary: #a855f7;     /* Cosmic Purple */
+  --accent-danger: #ef4444;        /* Reality Stone */
+  --accent-op: #7e22ce;
+  --accent-glow: rgba(234, 179, 8, 0.5);
+  --border-hud: rgba(234, 179, 8, 0.35);
+  --btn-num-bg: rgba(37, 21, 61, 0.75);
+  --btn-num-hover: rgba(56, 32, 92, 0.9);
+  --btn-func-bg: rgba(24, 14, 41, 0.8);
+  --btn-func-color: #fde047;
+  --reactor-core-color: #eab308;
+  --reactor-outer: #a855f7;
+  --grid-color: rgba(234, 179, 8, 0.05);
+}
+
+/* CAPTAIN AMERICA PROTOCOL (First Avenger) */
+[data-theme="captain"] {
+  --bg-primary: #070c18;
+  --bg-secondary: #0f182c;
+  --bg-panel: rgba(16, 26, 48, 0.85);
+  --bg-display: #050812;
+  --text-main: #ffffff;
+  --text-dim: #94a3b8;
+  --accent-primary: #3b82f6;       /* Star Blue */
+  --accent-secondary: #ffffff;     /* Shield Star White */
+  --accent-danger: #ef4444;        /* Shield Red */
+  --accent-op: #b91c1c;
+  --accent-glow: rgba(59, 130, 246, 0.45);
+  --border-hud: rgba(59, 130, 246, 0.3);
+  --btn-num-bg: rgba(20, 32, 59, 0.75);
+  --btn-num-hover: rgba(30, 48, 88, 0.9);
+  --btn-func-bg: rgba(13, 21, 39, 0.8);
+  --btn-func-color: #93c5fd;
+  --reactor-core-color: #ffffff;
+  --reactor-outer: #ef4444;
+  --grid-color: rgba(59, 130, 246, 0.04);
+}
+
+/* SPIDER-MAN PROTOCOL (Iron Spider) */
+[data-theme="spiderman"] {
+  --bg-primary: #0a0910;
+  --bg-secondary: #171220;
+  --bg-panel: rgba(25, 18, 33, 0.85);
+  --bg-display: #08060d;
+  --text-main: #f8fafc;
+  --text-dim: #94a3b8;
+  --accent-primary: #ef4444;       /* Web Red */
+  --accent-secondary: #0ea5e9;     /* Tech Blue */
+  --accent-danger: #f43f5e;
+  --accent-op: #0284c7;
+  --accent-glow: rgba(239, 68, 68, 0.45);
+  --border-hud: rgba(239, 68, 68, 0.3);
+  --btn-num-bg: rgba(28, 21, 38, 0.75);
+  --btn-num-hover: rgba(42, 32, 58, 0.9);
+  --btn-func-bg: rgba(18, 14, 26, 0.8);
+  --btn-func-color: #38bdf8;
+  --reactor-core-color: #ef4444;
+  --reactor-outer: #0ea5e9;
+  --grid-color: rgba(239, 68, 68, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   GLOBAL RESET & ATMOSPHERE
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sub);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  padding: 16px;
+  user-select: none;
+}
+
+/* Holographic Cyber Grid Background */
+.hologram-grid {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle CRT Scanlines for Sci-Fi Monitor feel */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.vignette-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ambient-glow {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.35;
+  transition: background var(--transition-normal);
+}
+
+/* --------------------------------------------------------------------------
+   MAIN APP SHELL
+   -------------------------------------------------------------------------- */
+.app-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 860px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   HUD HEADER
+   -------------------------------------------------------------------------- */
+.hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hud);
+  border-radius: var(--border-radius-md);
+  padding: 10px 18px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 12px rgba(0, 240, 255, 0.05);
+  position: relative;
+}
+
+.hud-branding {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stark-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-primary);
+}
+
+.logo-svg {
+  width: 90px;
+  height: 22px;
+}
+
+.hud-subtext {
+  font-family: var(--font-hud);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--accent-secondary);
+}
+
+.protocol-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.status-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   ANIMATED ARC REACTOR COMPONENT
+   -------------------------------------------------------------------------- */
+.arc-reactor-wrapper {
+  position: relative;
+  width: 62px;
+  height: 62px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.arc-reactor-wrapper:hover {
+  transform: scale(1.1);
+}
+
+.arc-reactor-wrapper:active {
+  transform: scale(0.95);
+}
+
+.reactor-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+}
+
+.outer-ring {
+  width: 58px;
+  height: 58px;
+  border-color: var(--reactor-outer);
+  border-style: dashed;
+  animation: spin-outer 18s linear infinite;
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.middle-ring {
+  width: 44px;
+  height: 44px;
+  border-color: var(--reactor-core-color);
+  border-width: 1.5px;
+  opacity: 0.8;
+  animation: spin-inner 8s linear infinite reverse;
+}
+
+.reactor-coils {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+}
+
+.coil {
+  position: absolute;
+  width: 3px;
+  height: 7px;
+  background: var(--accent-secondary);
+  top: 50%;
+  left: 50%;
+  margin-top: -3.5px;
+  margin-left: -1.5px;
+  border-radius: 1px;
+  box-shadow: 0 0 4px var(--accent-secondary);
+}
+
+.coil:nth-child(1) { transform: rotate(0deg) translateY(-21px); }
+.coil:nth-child(2) { transform: rotate(45deg) translateY(-21px); }
+.coil:nth-child(3) { transform: rotate(90deg) translateY(-21px); }
+.coil:nth-child(4) { transform: rotate(135deg) translateY(-21px); }
+.coil:nth-child(5) { transform: rotate(180deg) translateY(-21px); }
+.coil:nth-child(6) { transform: rotate(225deg) translateY(-21px); }
+.coil:nth-child(7) { transform: rotate(270deg) translateY(-21px); }
+.coil:nth-child(8) { transform: rotate(315deg) translateY(-21px); }
+
+.reactor-core {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 10%, var(--reactor-core-color) 70%, transparent 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 14px var(--reactor-core-color);
+}
+
+.core-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--reactor-core-color);
+  opacity: 0.6;
+  animation: pulse-core 2s infinite ease-in-out;
+}
+
+.core-symbol {
+  font-size: 11px;
+  color: #fff;
+  z-index: 2;
+  text-shadow: 0 0 6px #fff;
+}
+
+@keyframes spin-outer {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spin-inner {
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes pulse-core {
+  0%, 100% { transform: scale(0.9); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.9; }
+}
+
+/* Discharge pulse effect on Arc Reactor click or calculation */
+.reactor-discharge {
+  animation: arc-discharge 0.6s cubic-bezier(0.1, 0.9, 0.2, 1);
+}
+
+@keyframes arc-discharge {
+  0% { transform: scale(1); filter: brightness(1); }
+  40% { transform: scale(1.35); filter: brightness(2.5) drop-shadow(0 0 25px var(--accent-primary)); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+/* --------------------------------------------------------------------------
+   HEADER ACTIONS & THEME CONTROLS
+   -------------------------------------------------------------------------- */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-selector-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.theme-label {
+  font-family: var(--font-hud);
+  font-size: 0.58rem;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+}
+
+.hud-select {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-hud);
+  color: var(--text-main);
+  font-family: var(--font-sub);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: var(--border-radius-sm);
+  outline: none;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hud-select:hover, .hud-select:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.hud-button-group {
+  display: flex;
+  gap: 6px;
+}
+
+.icon-hud-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-hud);
+  color: var(--text-main);
+  border-radius: var(--border-radius-sm);
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.icon-hud-btn:hover {
+  border-color: var(--accent-primary);
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.icon-hud-btn.active {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.btn-icon {
+  font-size: 1.05rem;
+}
+
+.btn-tooltip {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   INFINITY STONES RIBBON (THANOS & MARVEL GLOW)
+   -------------------------------------------------------------------------- */
+.infinity-stones-ribbon {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+  background: rgba(10, 14, 24, 0.6);
+  border: 1px solid var(--border-hud);
+  border-radius: var(--border-radius-sm);
+  padding: 6px 12px;
+}
+
+.stone-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 6px;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-hud);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.stone-glow {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.stone-item.space   { color: #38bdf8; } .stone-item.space .stone-glow   { background: #38bdf8; }
+.stone-item.mind    { color: #facc15; } .stone-item.mind .stone-glow    { background: #facc15; }
+.stone-item.reality { color: #f43f5e; } .stone-item.reality .stone-glow { background: #f43f5e; }
+.stone-item.power   { color: #c084fc; } .stone-item.power .stone-glow   { background: #c084fc; }
+.stone-item.time    { color: #4ade80; } .stone-item.time .stone-glow    { background: #4ade80; }
+.stone-item.soul    { color: #fb923c; } .stone-item.soul .stone-glow    { background: #fb923c; }
+
+.stone-item:hover, .stone-item.active {
+  border-color: currentColor;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 10px currentColor;
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   CALCULATOR CARD & SCREEN DISPLAY
+   -------------------------------------------------------------------------- */
+.calculator-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-hud);
+  border-radius: var(--border-radius-lg);
+  padding: 16px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(0, 240, 255, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Screen Viewport */
+.hud-display-container {
+  background: var(--bg-display);
+  border: 1px solid var(--border-hud);
+  border-radius: var(--border-radius-md);
+  padding: 14px 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 16px rgba(0, 240, 255, 0.05);
+}
+
+.display-status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.mode-badges {
+  display: flex;
+  gap: 6px;
+}
+
+.badge {
+  font-family: var(--font-hud);
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-dim);
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.badge.active {
+  background: rgba(0, 240, 255, 0.15);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+
+.hud-stats {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--accent-secondary);
+  display: flex;
+  gap: 6px;
+}
+
+.stat-brackets {
+  color: var(--accent-primary);
+}
+
+.screen-viewport {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  min-height: 104px;
+  justify-content: center;
+}
+
+.expression-line {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  min-height: 1.3rem;
+  word-break: break-all;
+  text-align: right;
+  letter-spacing: 1px;
+  transition: color var(--transition-fast);
+}
+
+.main-display-line {
+  font-family: var(--font-hud);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  text-shadow: 0 0 12px var(--accent-glow);
+  letter-spacing: 2px;
+  word-break: break-all;
+  text-align: right;
+  width: 100%;
+  outline: none;
+  transition: transform 0.1s ease;
+}
+
+.main-display-line.flash {
+  animation: display-flash 0.3s ease-out;
+}
+
+@keyframes display-flash {
+  0% { transform: scale(1.02); filter: brightness(1.8); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+.live-preview-line {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--accent-secondary);
+  opacity: 0.85;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 1.2rem;
+}
+
+.preview-equals {
+  color: var(--text-dim);
+}
+
+.display-glow-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-primary) 50%, transparent 100%);
+  opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------------
+   KEYPAD & CONTROL DECK
+   -------------------------------------------------------------------------- */
+.calculator-keypad {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Quick Control Strip (DEG, 2nd, HYP, Memory) */
+.control-strip {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 6px;
+}
+
+.cmd-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-hud);
+  color: var(--text-dim);
+  font-family: var(--font-hud);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 8px 4px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+
+.cmd-btn:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  background: rgba(0, 240, 255, 0.08);
+}
+
+.cmd-btn.active {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+  font-weight: 700;
+}
+
+/* Main Grid */
+.grid-keypad {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+}
+
+/* General Button Styling */
+.btn {
+  background: var(--btn-num-bg);
+  border: 1px solid var(--border-hud);
+  color: var(--text-main);
+  font-family: var(--font-sub);
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 13px 4px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.btn:active, .btn.pressed {
+  transform: scale(0.96);
+  filter: brightness(1.3);
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.4s ease;
+  pointer-events: none;
+}
+
+.btn:hover::after {
+  left: 150%;
+}
+
+/* Button Varieties */
+.btn-num {
+  font-family: var(--font-hud);
+  font-size: 1.25rem;
+  background: var(--btn-num-bg);
+}
+
+.btn-num:hover {
+  background: var(--btn-num-hover);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.btn-func {
+  background: var(--btn-func-bg);
+  color: var(--btn-func-color);
+  font-size: 1rem;
+}
+
+.btn-func:hover {
+  border-color: var(--btn-func-color);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 8px var(--btn-func-color);
+}
+
+.btn-paren {
+  background: var(--btn-func-bg);
+  color: var(--accent-secondary);
+  font-size: 1.2rem;
+}
+
+.btn-paren:hover {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 8px var(--accent-secondary);
+}
+
+.btn-op {
+  background: rgba(230, 36, 41, 0.18);
+  border-color: rgba(230, 36, 41, 0.45);
+  color: #ff6b6b;
+  font-family: var(--font-hud);
+  font-size: 1.25rem;
+}
+
+.btn-op:hover {
+  background: var(--accent-op);
+  color: #fff;
+  border-color: var(--accent-op);
+  box-shadow: 0 0 12px var(--accent-op);
+}
+
+.btn-danger {
+  background: rgba(255, 42, 68, 0.2);
+  border-color: var(--accent-danger);
+  color: var(--accent-danger);
+  font-family: var(--font-hud);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.btn-danger:hover {
+  background: var(--accent-danger);
+  color: #fff;
+  box-shadow: 0 0 14px var(--accent-danger);
+}
+
+.btn-action {
+  background: rgba(245, 197, 24, 0.15);
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+  font-size: 1.2rem;
+}
+
+.btn-action:hover {
+  background: var(--accent-secondary);
+  color: var(--bg-primary);
+  box-shadow: 0 0 12px var(--accent-secondary);
+}
+
+/* Bottom Spanning Row: Repulsor Equals Button */
+.row-spanning-bottom {
+  grid-column: span 8;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 5fr;
+  gap: 8px;
+}
+
+.btn-equals {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #0099ff 100%);
+  border: 1px solid var(--accent-primary);
+  color: #050b14;
+  font-family: var(--font-hud);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px var(--accent-glow), 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: all var(--transition-fast);
+}
+
+.btn-equals:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 0 25px var(--accent-primary), 0 0 40px var(--accent-glow);
+  transform: translateY(-1px);
+}
+
+.btn-equals:active, .btn-equals.pressed {
+  transform: scale(0.98);
+  filter: brightness(1.4);
+}
+
+.equals-label {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+}
+
+.equals-beam {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.btn-equals:hover .equals-beam {
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   HUD FOOTER
+   -------------------------------------------------------------------------- */
+.hud-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 8px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-mono-icon {
+  color: var(--accent-secondary);
+}
+
+.footer-right {
+  display: flex;
+  gap: 8px;
+}
+
+.tech-badge {
+  font-family: var(--font-hud);
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  border: 1px solid var(--border-hud);
+  color: var(--accent-primary);
+}
+
+/* --------------------------------------------------------------------------
+   SIDE MISSION LOG DRAWER (HISTORY)
+   -------------------------------------------------------------------------- */
+.history-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  max-width: 90vw;
+  height: 100vh;
+  background: var(--bg-panel);
+  border-left: 2px solid var(--accent-primary);
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.history-drawer.open {
+  right: 0;
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border-hud);
+}
+
+.drawer-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-primary);
+  font-family: var(--font-hud);
+  font-size: 0.95rem;
+}
+
+.drawer-close {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.drawer-close:hover {
+  color: var(--accent-danger);
+}
+
+.drawer-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 20px;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.history-empty {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 30px 10px;
+  letter-spacing: 1px;
+}
+
+.history-card {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-hud);
+  border-left: 3px solid var(--accent-secondary);
+  border-radius: var(--border-radius-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.history-card:hover {
+  border-color: var(--accent-primary);
+  background: rgba(0, 240, 255, 0.08);
+  transform: translateX(-3px);
+}
+
+.history-time {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.history-expr {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  word-break: break-all;
+}
+
+.history-res {
+  font-family: var(--font-hud);
+  font-size: 1.15rem;
+  color: var(--accent-primary);
+  text-align: right;
+  word-break: break-all;
+}
+
+.drawer-footer {
+  display: flex;
+  gap: 10px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border-hud);
+}
+
+.drawer-btn {
+  flex: 1;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-hud);
+  color: var(--text-main);
+  font-family: var(--font-hud);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  padding: 10px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.drawer-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.drawer-btn.danger:hover {
+  border-color: var(--accent-danger);
+  color: var(--accent-danger);
+  box-shadow: 0 0 10px rgba(255, 42, 68, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   QUANTUM CONVERTER MODAL
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--accent-primary);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow);
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modal-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modal-pop {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-hud);
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent-primary);
+  font-family: var(--font-hud);
+  font-size: 0.95rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: var(--accent-danger);
+}
+
+.modal-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.converter-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cat-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-hud);
+  color: var(--text-dim);
+  font-family: var(--font-hud);
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.cat-btn:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.cat-btn.active {
+  background: var(--accent-primary);
+  color: var(--bg-primary);
+  border-color: var(--accent-primary);
+  font-weight: 700;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.conversion-grid {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.convert-input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.convert-input-group label {
+  font-family: var(--font-hud);
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+}
+
+.hud-input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-hud);
+  color: var(--accent-primary);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  border-radius: var(--border-radius-sm);
+  outline: none;
+}
+
+.hud-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.convert-arrow {
+  color: var(--accent-secondary);
+  font-size: 1.5rem;
+  margin-top: 18px;
+}
+
+.marvel-easter-egg {
+  font-size: 0.8rem;
+  color: var(--accent-secondary);
+  background: rgba(245, 197, 24, 0.08);
+  border: 1px solid rgba(245, 197, 24, 0.25);
+  padding: 10px 14px;
+  border-radius: var(--border-radius-sm);
+  font-style: italic;
+}
+
+.modal-footer {
+  padding: 14px 20px;
+  border-top: 1px solid var(--border-hud);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE LAYOUT BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .app-container {
+    max-width: 100%;
+  }
+
+  .hud-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .hud-branding {
+    align-items: center;
+    text-align: center;
+  }
+
+  .arc-reactor-wrapper {
+    margin: 0 auto;
+  }
+
+  .header-actions {
+    justify-content: space-between;
+  }
+
+  .control-strip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .grid-keypad {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Rearrange columns on mobile to keep numbers natural */
+  .grid-keypad .btn {
+    padding: 12px 2px;
+    font-size: 1.05rem;
+  }
+
+  .row-spanning-bottom {
+    grid-column: span 4;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .btn-equals {
+    grid-column: span 3;
+    padding: 14px;
+  }
+
+  .conversion-grid {
+    flex-direction: column;
+  }
+
+  .convert-arrow {
+    margin: 0;
+    transform: rotate(90deg);
+  }
+
+  .main-display-line {
+    font-size: 1.8rem;
+  }
+}

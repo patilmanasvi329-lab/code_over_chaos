@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STARK INDUSTRIES // Quantum Scientific Calculator</title>
+  <!-- Google Fonts: Orbitron & Rajdhani for futuristic Stark HUD aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="ironman">
+  <!-- Cyber Background FX -->
+  <div class="hologram-grid"></div>
+  <div class="scanlines"></div>
+  <div class="vignette-overlay"></div>
+  <div class="ambient-glow" id="ambientGlow"></div>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Top System Header -->
+    <header class="hud-header">
+      <div class="hud-branding">
+        <div class="stark-logo">
+          <svg viewBox="0 0 100 24" class="logo-svg" fill="currentColor">
+            <path d="M0,0 L18,0 L14,24 L0,24 Z M22,0 L36,0 L32,24 L18,24 Z M42,0 L56,0 L52,24 L38,24 Z" opacity="0.3"/>
+            <text x="5" y="18" font-family="'Orbitron', sans-serif" font-weight="900" font-size="16" letter-spacing="3" fill="currentColor">STARK</text>
+          </svg>
+          <span class="hud-subtext" id="hudSubtext">INDUSTRIES // OS MARK-85</span>
+        </div>
+        <div class="protocol-status">
+          <span class="status-dot"></span>
+          <span class="status-label" id="systemStatusText">J.A.R.V.I.S. PROTOCOL : ONLINE</span>
+        </div>
+      </div>
+
+      <!-- Center Interactive Arc Reactor -->
+      <div class="arc-reactor-wrapper" id="arcReactor" title="Stark Mark-85 Arc Reactor (Click to Discharge)">
+        <div class="reactor-ring outer-ring"></div>
+        <div class="reactor-ring middle-ring"></div>
+        <div class="reactor-coils">
+          <div class="coil"></div><div class="coil"></div><div class="coil"></div>
+          <div class="coil"></div><div class="coil"></div><div class="coil"></div>
+          <div class="coil"></div><div class="coil"></div>
+        </div>
+        <div class="reactor-core">
+          <div class="core-pulse"></div>
+          <div class="core-symbol">⚡</div>
+        </div>
+      </div>
+
+      <!-- Controls & Quick Actions -->
+      <div class="header-actions">
+        <!-- Theme Switcher Selector -->
+        <div class="theme-selector-dropdown">
+          <label for="themeSelect" class="theme-label">HERO PROTOCOL:</label>
+          <select id="themeSelect" class="hud-select" aria-label="Select Marvel Theme">
+            <option value="ironman" selected>🔴 Iron Man (Mark 85)</option>
+            <option value="wakanda">🟣 Wakanda (Black Panther)</option>
+            <option value="thor">⚡ Thor (God of Thunder)</option>
+            <option value="thanos">💎 Thanos (Infinity Gauntlet)</option>
+            <option value="captain">⭐ Captain America (Vibranium Shield)</option>
+            <option value="spiderman">🕷️ Spider-Man (Iron Spider)</option>
+          </select>
+        </div>
+
+        <!-- Audio & Utility Controls -->
+        <div class="hud-button-group">
+          <button id="btnVoice" class="icon-hud-btn" title="Toggle J.A.R.V.I.S. Audio Voice Synthesis" aria-label="Toggle Voice Feedback">
+            <span class="btn-icon">🎙️</span>
+            <span class="btn-tooltip">VOICE</span>
+          </button>
+          <button id="btnSound" class="icon-hud-btn active" title="Toggle Repulsor SFX Audio" aria-label="Toggle SFX">
+            <span class="btn-icon" id="soundIcon">🔊</span>
+            <span class="btn-tooltip">SFX</span>
+          </button>
+          <button id="btnConverter" class="icon-hud-btn" title="Open Quantum Unit Converter" aria-label="Quantum Converter">
+            <span class="btn-icon">⚛️</span>
+            <span class="btn-tooltip">CONVERT</span>
+          </button>
+          <button id="btnHistory" class="icon-hud-btn" title="Open Mission History Log" aria-label="Mission History Log">
+            <span class="btn-icon">📜</span>
+            <span class="btn-tooltip">LOGS</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Infinity Stones Status Ribbon (Active in Thanos & Superhero states) -->
+    <div class="infinity-stones-ribbon" id="infinityStonesRibbon">
+      <div class="stone-item space" data-stone="Space" title="Space Stone: Tesseract Coordinates">
+        <span class="stone-glow"></span>
+        <span class="stone-name">SPACE</span>
+      </div>
+      <div class="stone-item mind" data-stone="Mind" title="Mind Stone: Logic & Neural Computing">
+        <span class="stone-glow"></span>
+        <span class="stone-name">MIND</span>
+      </div>
+      <div class="stone-item reality" data-stone="Reality" title="Reality Stone: Complex Equations">
+        <span class="stone-glow"></span>
+        <span class="stone-name">REALITY</span>
+      </div>
+      <div class="stone-item power" data-stone="Power" title="Power Stone: Exponential Calculation">
+        <span class="stone-glow"></span>
+        <span class="stone-name">POWER</span>
+      </div>
+      <div class="stone-item time" data-stone="Time" title="Time Stone: Calculation Trajectories">
+        <span class="stone-glow"></span>
+        <span class="stone-name">TIME</span>
+      </div>
+      <div class="stone-item soul" data-stone="Soul" title="Soul Stone: Quantum Harmonics">
+        <span class="stone-glow"></span>
+        <span class="stone-name">SOUL</span>
+      </div>
+    </div>
+
+    <!-- Main Calculator Body Card -->
+    <main class="calculator-card">
+      
+      <!-- Holographic Display Unit -->
+      <section class="hud-display-container">
+        <!-- Status & Mode Ribbon -->
+        <div class="display-status-bar">
+          <div class="mode-badges">
+            <span class="badge active" id="badgeAngle">DEG</span>
+            <span class="badge" id="badge2nd">2ND</span>
+            <span class="badge" id="badgeHyp">HYP</span>
+            <span class="badge" id="badgeMem">M: 0</span>
+          </div>
+          <div class="hud-stats">
+            <span class="stat-text" id="coreEnergyText">ENERGY: 100%</span>
+            <span class="stat-brackets">[ READY ]</span>
+          </div>
+        </div>
+
+        <!-- Calculation Expression & Live Preview Display -->
+        <div class="screen-viewport">
+          <!-- Upper expression line (shows current full equation) -->
+          <div class="expression-line" id="expressionDisplay" title="Current Equation"></div>
+          
+          <!-- Primary large digit readout -->
+          <div class="main-display-line" id="mainDisplay" tabindex="0" title="Main Value Readout">0</div>
+
+          <!-- Bottom live evaluation preview (calculates as you type) -->
+          <div class="live-preview-line" id="livePreview" title="Dynamic Output Preview">
+            <span class="preview-equals">=</span> <span id="previewValue">0</span>
+          </div>
+        </div>
+
+        <!-- Display Glow FX Line -->
+        <div class="display-glow-divider"></div>
+      </section>
+
+      <!-- Keypad Control Deck -->
+      <section class="calculator-keypad">
+        
+        <!-- Quick Control Strip (Angle, Modes, Memory) -->
+        <div class="control-strip">
+          <button class="cmd-btn" id="btnToggleAngle" title="Switch between Degrees and Radians">DEG</button>
+          <button class="cmd-btn" id="btnToggle2nd" title="Toggle 2nd Inverse Functions (arcsin, arccos, etc.)">2nd</button>
+          <button class="cmd-btn" id="btnToggleHyp" title="Toggle Hyperbolic Functions (sinh, cosh, tanh)">HYP</button>
+          <button class="cmd-btn" id="btnMemoryClear" title="Clear Memory (MC)">MC</button>
+          <button class="cmd-btn" id="btnMemoryRecall" title="Recall Memory (MR)">MR</button>
+          <button class="cmd-btn" id="btnMemoryAdd" title="Add to Memory (M+)">M+</button>
+          <button class="cmd-btn" id="btnMemorySub" title="Subtract from Memory (M-)">M-</button>
+          <button class="cmd-btn" id="btnMemoryStore" title="Store in Memory (MS)">MS</button>
+        </div>
+
+        <!-- Main Button Grid -->
+        <div class="grid-keypad">
+          
+          <!-- ROW 1: Constants & Modifiers -->
+          <button class="btn btn-func" data-action="insert-const" data-value="pi" title="Pi constant (3.14159...)">π</button>
+          <button class="btn btn-func" data-action="insert-const" data-value="e" title="Euler's constant (2.71828...)">e</button>
+          <button class="btn btn-func" data-action="insert-const" data-value="c" title="Speed of Light constant (299,792,458 m/s)">c</button>
+          <button class="btn btn-func" data-action="insert-const" data-value="phi" title="Golden Ratio (1.61803...)">ϕ</button>
+          <button class="btn btn-paren" data-action="insert-symbol" data-value="(" title="Open Parenthesis">(</button>
+          <button class="btn btn-paren" data-action="insert-symbol" data-value=")" title="Close Parenthesis">)</button>
+          <button class="btn btn-danger" data-action="clear-all" title="All Clear (AC) - Reset Core">AC</button>
+          <button class="btn btn-action" data-action="backspace" title="Delete Last Character">⌫</button>
+
+          <!-- ROW 2: Trigonometric & Power Functions -->
+          <button class="btn btn-func dynamic-fn" id="fnSin" data-action="insert-func" data-primary="sin" data-inv="asin" data-hyp="sinh" data-hypsinv="asinh" title="Sine / Arcsine">sin</button>
+          <button class="btn btn-func dynamic-fn" id="fnCos" data-action="insert-func" data-primary="cos" data-inv="acos" data-hyp="cosh" data-hypinv="acosh" title="Cosine / Arccosine">cos</button>
+          <button class="btn btn-func dynamic-fn" id="fnTan" data-action="insert-func" data-primary="tan" data-inv="atan" data-hyp="tanh" data-hypinv="atanh" title="Tangent / Arctangent">tan</button>
+          <button class="btn btn-func dynamic-fn" id="fnPow" data-action="insert-op" data-primary="^" data-inv="root" title="Power xʸ / y-th root">xʸ</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="7">7</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="8">8</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="9">9</button>
+          <button class="btn btn-op" data-action="insert-op" data-value="/" title="Divide">÷</button>
+
+          <!-- ROW 3: Logarithms & Roots -->
+          <button class="btn btn-func dynamic-fn" id="fnLn" data-action="insert-func" data-primary="ln" data-inv="exp" title="Natural Logarithm (ln) / eˣ">ln</button>
+          <button class="btn btn-func dynamic-fn" id="fnLog" data-action="insert-func" data-primary="log" data-inv="pow10" title="Base-10 Logarithm (log₁₀) / 10ˣ">log</button>
+          <button class="btn btn-func dynamic-fn" id="fnSqrt" data-action="insert-func" data-primary="sqrt" data-inv="sqr" title="Square Root (√x) / x²">√x</button>
+          <button class="btn btn-func dynamic-fn" id="fnCbrt" data-action="insert-func" data-primary="cbrt" data-inv="cube" title="Cube Root (∛x) / x³">∛x</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="4">4</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="5">5</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="6">6</button>
+          <button class="btn btn-op" data-action="insert-op" data-value="*" title="Multiply">×</button>
+
+          <!-- ROW 4: Factorial, Reciprocal, Modulo -->
+          <button class="btn btn-func" data-action="insert-symbol" data-value="!" title="Factorial (x!)">x!</button>
+          <button class="btn btn-func" data-action="insert-func" data-value="inv" title="Reciprocal (1/x)">1/x</button>
+          <button class="btn btn-func" data-action="insert-op" data-value="%" title="Percentage / Modulo">%</button>
+          <button class="btn btn-func" data-action="insert-op" data-value="mod" title="Modulo Division">mod</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="1">1</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="2">2</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="3">3</button>
+          <button class="btn btn-op" data-action="insert-op" data-value="-" title="Subtract">−</button>
+
+          <!-- ROW 5: Special, Sign, Equal -->
+          <button class="btn btn-func dynamic-fn" id="fnPerm" data-action="insert-op" data-primary="nPr" data-inv="nCr" title="Permutation nPr / Combination nCr">nPr</button>
+          <button class="btn btn-func" data-action="insert-func" data-value="abs" title="Absolute Value |x|">|x|</button>
+          <button class="btn btn-func" data-action="insert-func" data-value="rand" title="Random Number (0 - 1)">RND</button>
+          <button class="btn btn-func" data-action="negate" title="Negate Sign (+/-)">±</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="0">0</button>
+          <button class="btn btn-num" data-action="insert-digit" data-value="." title="Decimal Point">.</button>
+          <button class="btn btn-func" data-action="insert-ans" title="Previous Answer (ANS)">ANS</button>
+          <button class="btn btn-op" data-action="insert-op" data-value="+" title="Add">+</button>
+
+          <!-- ROW 6: Scientific Notation & Repulsor Equals -->
+          <div class="row-spanning-bottom">
+            <button class="btn btn-func" data-action="insert-symbol" data-value="E" title="Scientific Notation Exponent (e.g. 1.5E6)">EXP</button>
+            <button class="btn btn-func" data-action="insert-const" data-value="h" title="Planck's Quantum Constant">h</button>
+            <button class="btn btn-func" data-action="insert-const" data-value="G" title="Gravitational Constant">G</button>
+            <button class="btn btn-equals" id="btnEquals" data-action="calculate" title="UNLEASH / COMPUTE [Enter]">
+              <span class="equals-label">= UNLEASH =</span>
+              <span class="equals-beam"></span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Bottom Status Bar -->
+      <footer class="hud-footer">
+        <div class="footer-left">
+          <span class="hud-mono-icon">⚡</span>
+          <span id="formulaTip">TIP: Supports nested brackets, keyboard input, implicit multiplication (e.g. 2π, 5(3+4))</span>
+        </div>
+        <div class="footer-right">
+          <span class="tech-badge">AVENGERS INITIATIVE</span>
+          <span class="tech-badge" id="themeActiveBadge">STARK PROTOCOL</span>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Side Mission Log Drawer (Calculation History) -->
+    <aside class="history-drawer" id="historyDrawer" aria-hidden="true">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <span class="drawer-icon">📜</span>
+          <h3>STARK MISSION ARCHIVES</h3>
+        </div>
+        <button class="drawer-close" id="btnCloseHistory" title="Close Archives">✕</button>
+      </div>
+      <div class="drawer-content">
+        <div class="history-list" id="historyList">
+          <!-- Populated dynamically by script.js -->
+          <div class="history-empty">NO MISSION CALCULATIONS RECORDED</div>
+        </div>
+      </div>
+      <div class="drawer-footer">
+        <button class="drawer-btn danger" id="btnClearHistory">PURGE LOGS</button>
+        <button class="drawer-btn" id="btnCopyHistory">COPY ALL</button>
+      </div>
+    </aside>
+
+    <!-- Quantum Unit Converter Modal -->
+    <div class="modal-backdrop" id="converterModal" aria-hidden="true">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div class="modal-title">
+            <span class="modal-icon">⚛️</span>
+            <h3>STARK QUANTUM CONVERTER</h3>
+          </div>
+          <button class="modal-close" id="btnCloseConverter" title="Close Converter">✕</button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Category Picker -->
+          <div class="converter-categories">
+            <button class="cat-btn active" data-cat="energy">ENERGY / POWER</button>
+            <button class="cat-btn" data-cat="speed">VELOCITY</button>
+            <button class="cat-btn" data-cat="length">LENGTH / DISTANCE</button>
+            <button class="cat-btn" data-cat="mass">MASS</button>
+            <button class="cat-btn" data-cat="temp">TEMPERATURE</button>
+          </div>
+
+          <!-- Conversion Fields -->
+          <div class="conversion-grid">
+            <div class="convert-input-group">
+              <label for="convertFromVal">INPUT VALUE:</label>
+              <input type="number" id="convertFromVal" class="hud-input" value="1" step="any">
+              <select id="convertFromUnit" class="hud-select" aria-label="From Unit"></select>
+            </div>
+
+            <div class="convert-arrow">
+              <span class="arrow-symbol">⇄</span>
+            </div>
+
+            <div class="convert-input-group">
+              <label for="convertToVal">CONVERTED QUANTUM OUTPUT:</label>
+              <input type="text" id="convertToVal" class="hud-input" readonly>
+              <select id="convertToUnit" class="hud-select" aria-label="To Unit"></select>
+            </div>
+          </div>
+
+          <div class="marvel-easter-egg" id="converterEasterEgg">
+            💡 Stark Fact: Mark-85 Arc Reactor outputs ~3.14 Gigajoules per second at peak combat overload.
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="drawer-btn" id="btnTransferToCalc">TRANSFER RESULT TO CALCULATOR</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Audio Synthesizer & Calculator Engine -->
+  <script src="script.js"></script>
+</body>
+</html>

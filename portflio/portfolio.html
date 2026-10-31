@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manasvi Patil | Developer Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #10b981;
+            --accent-glow: rgba(16, 185, 129, 0.4);
+            --font-mono: 'Courier New', Courier, monospace;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-top: 0;
+        }
+
+        /* Interactive Terminal Section */
+        .terminal-wrapper {
+            background-color: #000;
+            border-radius: 8px;
+            border: 1px solid #334155;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 4rem;
+            overflow: hidden;
+            font-family: var(--font-mono);
+        }
+
+        .terminal-header {
+            background-color: #1e293b;
+            padding: 0.5rem 1rem;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .dot.red { background-color: #ef4444; }
+        .dot.yellow { background-color: #eab308; }
+        .dot.green { background-color: #22c55e; }
+
+        .terminal-body {
+            padding: 1.5rem;
+            height: 250px;
+            overflow-y: auto;
+            color: var(--accent);
+        }
+
+        .terminal-line { margin-bottom: 0.5rem; }
+        .terminal-output { color: var(--text-muted); margin-bottom: 1rem; }
+        
+        .input-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .prompt { color: var(--accent); font-weight: bold; }
+        
+        input#cmd {
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            width: 100%;
+            outline: none;
+        }
+
+        /* Skills Matrix */
+        .section-title {
+            font-size: 1.75rem;
+            border-bottom: 2px solid var(--surface-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .skill-card {
+            background-color: var(--surface-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-card {
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            padding: 2rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        .project-card h3 { margin-top: 0; color: #fff; }
+        .project-card p { color: var(--text-muted); }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem 0;
+            border-top: 1px solid var(--surface-color);
+        }
+        
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Manasvi Patil</h1>
+            <h2>BCA Graduate | Current MCA 1st Year Student</h2>
+        </header>
+
+        <!-- The Easter Egg: Interactive Terminal -->
+        <section class="terminal-wrapper">
+            <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+                <div class="terminal-line">System initializing...</div>
+                <div class="terminal-line">Type 'help' to view available commands.</div>
+                <div id="output-area"></div>
+                <div class="input-line">
+                    <span class="prompt">visitor@portfolio:~$</span>
+                    <input type="text" id="cmd" autocomplete="off" autofocus>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <h2 class="section-title">Core Competencies</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Python & C++</h3>
+                <p>Backend logic, algorithms, and core programming</p>
+            </div>
+            <div class="skill-card">
+                <h3>AI Design Tools</h3>
+                <p>Digital image generation and UI/UX design</p>
+            </div>
+            <div class="skill-card">
+                <h3>Presentation AI</h3>
+                <p>Structured document and pitch deck generation</p>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Smart Digital Wardrobe App</h3>
+                <p>An application utilizing AI background removal and smart categorization to generate optimal outfits based on an uploaded personal clothing database.</p>
+            </div>
+            <div class="project-card">
+                <h3>AI & Robotics Summer Camp</h3>
+                <p>Developed comprehensive curriculum, module descriptions, and promotional layouts for a 6-day technology summer camp proposal.</p>
+            </div>
+            <div class="project-card">
+                <h3>Cybersecurity PGP Model</h3>
+                <p>Exploration and modeling of Pretty Good Privacy (PGP) encryption workflows, implementing symmetric session keys and digital signatures.</p>
+            </div>
+            <div class="project-card">
+                <h3>Data Science Qualifier</h3>
+                <p>Successful completion of a rigorous Data Science and AI qualification project, establishing foundations in data modeling and analysis.</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Connect with me: <a href="#">GitHub</a> | <a href="#">LinkedIn</a> | <a href="#">Email</a></p>
+        </footer>
+    </div>
+
+    <!-- Terminal Logic -->
+    <script>
+        const input = document.getElementById('cmd');
+        const outputArea = document.getElementById('output-area');
+        const terminalBody = document.getElementById('terminal-body');
+
+        const commands = {
+            'help': 'Available commands: about, skills, projects, clear',
+            'about': 'Hi, I am Manasvi. I recently completed my BCA and am currently in my 1st year of MCA. I bridge software engineering with AI and data science.',
+            'skills': 'Core Skills:\n- Python & C++\n- AI Design & Presentation Tools\n- Problem Solving',
+            'projects': 'Loading projects...\n1. Smart Digital Wardrobe\n2. AI & Robotics Camp Curriculum\n3. Cybersecurity PGP Encryption\n4. Data Science Qualifier',
+        };
+
+        input.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                const cmdVal = input.value.trim().toLowerCase();
+                if (cmdVal) {
+                    // Echo command
+                    const echo = document.createElement('div');
+                    echo.className = 'terminal-line';
+                    echo.innerHTML = `<span class="prompt">visitor@portfolio:~$</span> ${cmdVal}`;
+                    outputArea.appendChild(echo);
+
+                    // Handle command
+                    if (cmdVal === 'clear') {
+                        outputArea.innerHTML = '';
+                    } else {
+                        const response = document.createElement('div');
+                        response.className = 'terminal-output';
+                        response.innerText = commands[cmdVal] || `Command not found: ${cmdVal}. Type 'help' for a list of commands.`;
+                        outputArea.appendChild(response);
+                    }
+                }
+                input.value = '';
+                terminalBody.scrollTop = terminalBody.scrollHeight;
+            }
+        });
+
+        // Ensure clicking terminal focuses input
+        terminalBody.addEventListener('click', () => {
+            input.focus();
+        });
+    </script>
+</body>
+</html>
