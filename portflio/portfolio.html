@@ -1,280 +1,674 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manasvi Patil | Developer Portfolio</title>
-    <style>
-        :root {
-            --bg-color: #0f172a;
-            --surface-color: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #10b981;
-            --accent-glow: rgba(16, 185, 129, 0.4);
-            --font-mono: 'Courier New', Courier, monospace;
-            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: var(--font-sans);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        header {
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            color: var(--accent);
-            font-weight: 500;
-            margin-top: 0;
-        }
-
-        /* Interactive Terminal Section */
-        .terminal-wrapper {
-            background-color: #000;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-bottom: 4rem;
-            overflow: hidden;
-            font-family: var(--font-mono);
-        }
-
-        .terminal-header {
-            background-color: #1e293b;
-            padding: 0.5rem 1rem;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-        .dot.red { background-color: #ef4444; }
-        .dot.yellow { background-color: #eab308; }
-        .dot.green { background-color: #22c55e; }
-
-        .terminal-body {
-            padding: 1.5rem;
-            height: 250px;
-            overflow-y: auto;
-            color: var(--accent);
-        }
-
-        .terminal-line { margin-bottom: 0.5rem; }
-        .terminal-output { color: var(--text-muted); margin-bottom: 1rem; }
-        
-        .input-line {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .prompt { color: var(--accent); font-weight: bold; }
-        
-        input#cmd {
-            background: transparent;
-            border: none;
-            color: var(--text-main);
-            font-family: var(--font-mono);
-            font-size: 1rem;
-            width: 100%;
-            outline: none;
-        }
-
-        /* Skills Matrix */
-        .section-title {
-            font-size: 1.75rem;
-            border-bottom: 2px solid var(--surface-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .skill-card {
-            background-color: var(--surface-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-2px);
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .project-card {
-            background-color: var(--surface-color);
-            border-radius: 8px;
-            padding: 2rem;
-            border-top: 4px solid var(--accent);
-        }
-
-        .project-card h3 { margin-top: 0; color: #fff; }
-        .project-card p { color: var(--text-muted); }
-
-        footer {
-            text-align: center;
-            color: var(--text-muted);
-            padding: 2rem 0;
-            border-top: 1px solid var(--surface-color);
-        }
-        
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manasvi Patil — AI/ML &amp; Data Science</title>
+  <meta
+    name="description"
+    content="Portfolio of Manasvi Patil — BCA graduate and first-year MCA student focused on AI/ML &amp; Data Science, Python, Java, C, C++, JavaScript, SQL, and applied NLP."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <div class="container">
-        <header>
-            <h1>Manasvi Patil</h1>
-            <h2>BCA Graduate | Current MCA 1st Year Student</h2>
-        </header>
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress__fill" id="reading-progress-fill"></div>
+  </div>
 
-        <!-- The Easter Egg: Interactive Terminal -->
-        <section class="terminal-wrapper">
-            <div class="terminal-header">
-                <div class="dot red"></div>
-                <div class="dot yellow"></div>
-                <div class="dot green"></div>
+  <div class="folio-frame">
+    <!-- Top Editorial Navigation -->
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="#top" aria-label="Manasvi Patil home">
+          <span class="brand__monogram" aria-hidden="true">MP</span>
+          <span class="brand__name">Manasvi Patil</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary sections">
+          <a href="#works">Works</a>
+          <a href="#experience">Chronicle</a>
+          <a href="#skills">Capabilities</a>
+          <a href="#honors">Honors</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            type="button"
+            class="pill-btn"
+            id="concierge-open"
+            aria-label="Open Atelier Index command palette"
+          >
+            <span>Index</span>
+            <kbd>⌘K</kbd>
+          </button>
+
+          <button
+            type="button"
+            class="pill-btn"
+            id="theme-toggle"
+            aria-pressed="false"
+            aria-label="Switch to Noir dark edition"
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <circle cx="12" cy="12" r="4.5"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+            </svg>
+            <span id="theme-label">Ivory</span>
+          </button>
+
+          <button
+            type="button"
+            class="icon-btn mobile-menu-btn"
+            id="mobile-menu-toggle"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Toggle navigation menu"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <line x1="4" y1="8" x2="20" y2="8"></line>
+              <line x1="4" y1="16" x2="20" y2="16"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+        <div class="mobile-nav__links">
+          <a href="#works">01 · Selected Works</a>
+          <a href="#experience">02 · Chronicle &amp; Education</a>
+          <a href="#skills">03 · Technical Matrix</a>
+          <a href="#honors">04 · Honors &amp; Certifications</a>
+          <a href="#contact">05 · Contact &amp; Colophon</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- Hero Cover Spread -->
+      <section class="hero" id="top" aria-labelledby="hero-name">
+        <div class="container hero__grid">
+          <div class="hero__content">
+            <div class="hero__meta-row">
+              <span class="eyebrow">Portfolio · Monograph Edition</span>
+              <span class="status-badge">
+                <span class="status-badge__dot" aria-hidden="true"></span>
+                <span>MCA (Pursuing) · AI/ML &amp; Data Science</span>
+              </span>
             </div>
-            <div class="terminal-body" id="terminal-body">
-                <div class="terminal-line">System initializing...</div>
-                <div class="terminal-line">Type 'help' to view available commands.</div>
-                <div id="output-area"></div>
-                <div class="input-line">
-                    <span class="prompt">visitor@portfolio:~$</span>
-                    <input type="text" id="cmd" autocomplete="off" autofocus>
+
+            <h1 class="hero__title" id="hero-name">
+              Manasvi
+              <em>Patil</em>
+            </h1>
+
+            <p class="hero__subtitle">
+              Applied machine intelligence, NLP systems &amp; disciplined software engineering.
+            </p>
+
+            <p class="hero__summary">
+              BCA graduate and first-year MCA student with a solid grounding in programming (Python, Java, C, C++,
+              JavaScript), relational databases (SQL, SQLite), and applied machine learning (NLP, classification models).
+              Experienced in orchestrating STEM, Robotics, and AI education initiatives at IDoSTEM, managing
+              institutional partnerships and workshops. Possesses strong English communication and collaborative skills,
+              eager to contribute to technical and AI-focused initiatives.
+            </p>
+
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#works">
+                <span>Explore Selected Works</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M12 5v14M19 12l-7 7-7-7"></path>
+                </svg>
+              </a>
+
+              <a class="btn btn--outline" href="#contact">Get in Touch</a>
+
+              <button type="button" class="btn btn--ghost" data-print-cv>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                  <rect x="6" y="14" width="12" height="8"></rect>
+                </svg>
+                <span>Print CV</span>
+              </button>
+            </div>
+
+            <div class="hero__ledger" aria-label="Profile highlights">
+              <div>
+                <span class="ledger-item__label">Academic Track</span>
+                <span class="ledger-item__value">MCA First Year · BCA 7.73 CGPA</span>
+              </div>
+              <div>
+                <span class="ledger-item__label">Leadership</span>
+                <span class="ledger-item__value">Coordinator, IDoSTEM</span>
+              </div>
+              <div class="ledger-item--highlight">
+                <span class="ledger-item__label">Hackathon Winner</span>
+                <span class="ledger-item__value">1st Place · SIH Internal</span>
+              </div>
+            </div>
+          </div>
+
+          <figure class="portrait-figure">
+            <div class="portrait-mat">
+              <div class="portrait-frame">
+                <img
+                  src="assets/manasvi-patil.jpg"
+                  alt="Portrait of Manasvi Patil wearing a tailored black blazer over a black collared shirt against a warm stone backdrop"
+                  width="768"
+                  height="1024"
+                  fetchpriority="high"
+                  decoding="async"
+                >
+              </div>
+              <figcaption class="portrait-plaque">
+                <span>Fig. 01 · Manasvi Patil</span>
+                <strong>AI/ML &amp; Data Science</strong>
+              </figcaption>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 01 · Selected Works -->
+      <section class="section" id="works" aria-labelledby="works-heading">
+        <div class="container">
+          <div class="section-header reveal">
+            <div>
+              <span class="eyebrow">01 · Selected Works</span>
+              <h2 class="section-title" id="works-heading">
+                Engineering <em>Monographs</em>
+              </h2>
+            </div>
+            <p class="section-aside">
+              Four flagship builds spanning real-time 3D WebGL telemetry, AI styling workflows, NLP classification, and client-side mathematical systems.
+            </p>
+          </div>
+
+          <div class="filter-bar reveal" role="group" aria-label="Filter projects by discipline">
+            <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All Works (04)</button>
+            <button type="button" class="filter-btn" data-filter="fullstack" aria-pressed="false">Full-Stack &amp; 3D</button>
+            <button type="button" class="filter-btn" data-filter="ai" aria-pressed="false">AI / ML &amp; NLP</button>
+            <button type="button" class="filter-btn" data-filter="frontend" aria-pressed="false">Frontend Systems</button>
+          </div>
+
+          <p class="sr-only" id="filter-status" aria-live="polite">Showing 4 of 4 works.</p>
+
+          <div class="projects-grid">
+            <!-- Project 01 (Featured AI/ML Flagship) -->
+            <article class="project-card project-card--featured reveal" data-category="ai">
+              <div>
+                <div class="project-card__top">
+                  <span class="project-card__num">01 / MONOGRAPH</span>
+                  <span class="project-card__badge">Applied NLP · AI/ML</span>
                 </div>
-            </div>
-        </section>
+                <h3 class="project-card__title">Sentiment Analysis of Social Media Presence</h3>
+                <p class="project-card__subtitle">Applied NLP Classification &amp; Telemetry Interface</p>
+                <ul class="project-card__bullets">
+                  <li>Constructed an ML text classification pipeline (TF-IDF + Logistic Regression) classifying social media sentiment with high accuracy.</li>
+                  <li>Created a real-time Streamlit visualization interface tested rigorously with black-box and white-box test suites.</li>
+                </ul>
+              </div>
+              <div class="project-card__footer">
+                <div class="tag-row">
+                  <span class="tag">Python</span>
+                  <span class="tag">Machine Learning</span>
+                  <span class="tag">NLP</span>
+                  <span class="tag">Streamlit</span>
+                  <span class="tag">React.js</span>
+                </div>
+                <button type="button" class="monograph-link" data-monograph="sentiment-analysis">
+                  <span>Inspect Brief</span>
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </article>
 
-        <!-- Skills Section -->
-        <h2 class="section-title">Core Competencies</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>Python & C++</h3>
-                <p>Backend logic, algorithms, and core programming</p>
-            </div>
-            <div class="skill-card">
-                <h3>AI Design Tools</h3>
-                <p>Digital image generation and UI/UX design</p>
-            </div>
-            <div class="skill-card">
-                <h3>Presentation AI</h3>
-                <p>Structured document and pitch deck generation</p>
-            </div>
+            <!-- Project 02 (Featured AI Studio) -->
+            <article class="project-card project-card--featured reveal" data-category="fullstack,ai">
+              <div>
+                <div class="project-card__top">
+                  <span class="project-card__num">02 / MONOGRAPH</span>
+                  <span class="project-card__badge">AI &amp; Web Studio</span>
+                </div>
+                <h3 class="project-card__title">Atelier AI</h3>
+                <p class="project-card__subtitle">Smart Digital Wardrobe &amp; Stylist Studio</p>
+                <ul class="project-card__bullets">
+                  <li>Developed a smart closet and AI outfit generator implementing color theory rules, slot locking, and weather/occasion matching.</li>
+                  <li>Built a 7-day auto-styled lookbook with 6 visual themes and dual-layer persistence (SQLite REST API with local fallback).</li>
+                </ul>
+              </div>
+              <div class="project-card__footer">
+                <div class="tag-row">
+                  <span class="tag">Python Flask</span>
+                  <span class="tag">SQLite</span>
+                  <span class="tag">HTML5 / CSS3</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+                <button type="button" class="monograph-link" data-monograph="atelier-ai">
+                  <span>Inspect Brief</span>
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- Project 03 -->
+            <article class="project-card reveal" data-category="fullstack">
+              <div>
+                <div class="project-card__top">
+                  <span class="project-card__num">03 / MONOGRAPH</span>
+                  <span class="project-card__domain">3D &amp; Full-Stack</span>
+                </div>
+                <h3 class="project-card__title">Apex Drive</h3>
+                <p class="project-card__subtitle">Automotive Telemetry &amp; 3D Engineering Platform</p>
+                <ul class="project-card__bullets">
+                  <li>Built an interactive 3D web platform covering 20 supercars with an interactive Three.js viewer, exploded-view deconstruction, and custom GLB upload.</li>
+                  <li>Engineered a Spring Boot REST backend with Java Stream API query filtering and a 1/4-mile drag race simulator with telemetry soundboard.</li>
+                </ul>
+              </div>
+              <div class="project-card__footer">
+                <div class="tag-row">
+                  <span class="tag">Three.js</span>
+                  <span class="tag">JavaScript</span>
+                  <span class="tag">Spring Boot 3</span>
+                  <span class="tag">REST API</span>
+                </div>
+                <button type="button" class="monograph-link" data-monograph="apex-drive">
+                  <span>Inspect Brief</span>
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- Project 04 -->
+            <article class="project-card reveal" data-category="frontend">
+              <div>
+                <div class="project-card__top">
+                  <span class="project-card__num">04 / MONOGRAPH</span>
+                  <span class="project-card__domain">Frontend Systems</span>
+                </div>
+                <h3 class="project-card__title">Stark Industries Quantum Scientific Calculator</h3>
+                <p class="project-card__subtitle">Algorithmic Expression Parser &amp; Procedural Audio</p>
+                <ul class="project-card__bullets">
+                  <li>Engineered a Shunting-Yard expression evaluator supporting trigonometric, combinatoric, and hyperbolic mathematical operations.</li>
+                  <li>Integrated speech-synthesis voice output, procedural sound synthesis, calculation history tracking, and 6 custom UI themes.</li>
+                </ul>
+              </div>
+              <div class="project-card__footer">
+                <div class="tag-row">
+                  <span class="tag">JavaScript (ES6+)</span>
+                  <span class="tag">Web Audio API</span>
+                  <span class="tag">Speech Synthesis</span>
+                </div>
+                <button type="button" class="monograph-link" data-monograph="quantum-calculator">
+                  <span>Inspect Brief</span>
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <!-- Projects Section -->
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>Smart Digital Wardrobe App</h3>
-                <p>An application utilizing AI background removal and smart categorization to generate optimal outfits based on an uploaded personal clothing database.</p>
+      <!-- 02 · Professional Chronicle & Academic Foundation -->
+      <section class="section" id="experience" aria-labelledby="chronicle-heading">
+        <div class="container">
+          <div class="section-header reveal">
+            <div>
+              <span class="eyebrow">02 · Chronicle</span>
+              <h2 class="section-title" id="chronicle-heading">
+                Experience &amp; <em>Education</em>
+              </h2>
             </div>
-            <div class="project-card">
-                <h3>AI & Robotics Summer Camp</h3>
-                <p>Developed comprehensive curriculum, module descriptions, and promotional layouts for a 6-day technology summer camp proposal.</p>
+            <p class="section-aside">
+              Operational leadership across STEM education partnerships alongside applied machine learning practice and formal computer applications study.
+            </p>
+          </div>
+
+          <div class="chronicle-grid">
+            <div class="reveal">
+              <h3 class="column-kicker">Professional Experience</h3>
+              <div class="timeline-list">
+                <article class="timeline-item">
+                  <span class="timeline-item__period">May 2026</span>
+                  <h4 class="timeline-item__role">Coordinator</h4>
+                  <p class="timeline-item__org">IDoSTEM NCEIR Innovation Tech Pvt. Ltd.</p>
+                  <ul class="timeline-item__points">
+                    <li>Coordinate planning and execution of Robotics, STEM, AI, and hands-on technology programs for partner schools.</li>
+                    <li>Manage communication across school leadership, mentors, and technical teams to ensure seamless operational delivery.</li>
+                    <li>Drive outreach to expand the “Lab-as-a-Service” model to rural schools while preparing program schedules and documentation.</li>
+                  </ul>
+                </article>
+
+                <article class="timeline-item">
+                  <span class="timeline-item__period">Aug 2024 – Sept 2024</span>
+                  <h4 class="timeline-item__role">AI/ML Intern</h4>
+                  <p class="timeline-item__org">InternPe</p>
+                  <ul class="timeline-item__points">
+                    <li>Gained hands-on experience in Artificial Intelligence and Machine Learning data pipelines and exploratory data analysis.</li>
+                    <li>Applied predictive modeling and feature preprocessing techniques to real-world datasets in an agile setting.</li>
+                  </ul>
+                </article>
+              </div>
             </div>
-            <div class="project-card">
-                <h3>Cybersecurity PGP Model</h3>
-                <p>Exploration and modeling of Pretty Good Privacy (PGP) encryption workflows, implementing symmetric session keys and digital signatures.</p>
+
+            <div class="reveal">
+              <h3 class="column-kicker">Academic Foundation</h3>
+              <div class="edu-table">
+                <div class="edu-row">
+                  <div class="edu-row__degree">Master of Computer Applications (MCA)</div>
+                  <div class="edu-row__year">2026 – Present</div>
+                  <div class="edu-row__detail">First Year · Pursuing</div>
+                </div>
+
+                <div class="edu-row">
+                  <div class="edu-row__degree">Bachelor of Computer Applications (BCA)</div>
+                  <div class="edu-row__year">2023 – 2026</div>
+                  <div class="edu-row__detail">CGPA: 7.73</div>
+                </div>
+
+                <div class="edu-row">
+                  <div class="edu-row__degree">Higher Secondary Certificate (HSC), Science</div>
+                  <div class="edu-row__year">Feb 2023</div>
+                  <div class="edu-row__detail">68.83% (431 / 600)</div>
+                </div>
+
+                <div class="edu-row">
+                  <div class="edu-row__degree">Secondary School Certificate (SSC)</div>
+                  <div class="edu-row__year">2021</div>
+                  <div class="edu-row__detail">77.00% (325 / 500)</div>
+                </div>
+              </div>
             </div>
-            <div class="project-card">
-                <h3>Data Science Qualifier</h3>
-                <p>Successful completion of a rigorous Data Science and AI qualification project, establishing foundations in data modeling and analysis.</p>
-            </div>
+          </div>
         </div>
+      </section>
 
-        <footer>
-            <p>Connect with me: <a href="#">GitHub</a> | <a href="#">LinkedIn</a> | <a href="#">Email</a></p>
-        </footer>
+      <!-- 03 · Technical Capabilities Matrix -->
+      <section class="section" id="skills" aria-labelledby="skills-heading">
+        <div class="container">
+          <div class="section-header reveal">
+            <div>
+              <span class="eyebrow">03 · Skills &amp; Competencies</span>
+              <h2 class="section-title" id="skills-heading">
+                Core <em>Capabilities</em>
+              </h2>
+            </div>
+            <p class="section-aside">
+              Grounded in core programming, relational databases, applied machine learning, and strong English communication.
+            </p>
+          </div>
+
+          <div class="skills-matrix reveal">
+            <div class="skill-pillar skill-pillar--wide">
+              <span class="skill-pillar__index">I · Core Foundations</span>
+              <h3 class="skill-pillar__title">Programming Languages</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">Python</span>
+                <span class="skill-chip">Java</span>
+                <span class="skill-chip">C</span>
+                <span class="skill-chip">C++</span>
+                <span class="skill-chip">JavaScript</span>
+              </div>
+            </div>
+
+            <div class="skill-pillar skill-pillar--wide skill-pillar--highlight">
+              <span class="skill-pillar__index">II · Specialization</span>
+              <h3 class="skill-pillar__title">AI &amp; Data Science</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">Machine Learning</span>
+                <span class="skill-chip">Natural Language Processing (NLP)</span>
+                <span class="skill-chip">Streamlit</span>
+                <span class="skill-chip">Power BI</span>
+              </div>
+            </div>
+
+            <div class="skill-pillar">
+              <span class="skill-pillar__index">III · Interface</span>
+              <h3 class="skill-pillar__title">Web Technologies</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">HTML5</span>
+                <span class="skill-chip">CSS3</span>
+              </div>
+            </div>
+
+            <div class="skill-pillar">
+              <span class="skill-pillar__index">IV · Data Storage</span>
+              <h3 class="skill-pillar__title">Databases</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">SQL</span>
+                <span class="skill-chip">SQLite</span>
+                <span class="skill-chip">DBMS</span>
+              </div>
+            </div>
+
+            <div class="skill-pillar">
+              <span class="skill-pillar__index">V · Collaboration</span>
+              <h3 class="skill-pillar__title">Communication &amp; Leadership</h3>
+              <div class="skill-chips">
+                <span class="skill-chip">Strong English Communication</span>
+                <span class="skill-chip">Team Coordination</span>
+                <span class="skill-chip">Workshop Management</span>
+                <span class="skill-chip">Problem-Solving</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 · Honors & Certifications -->
+      <section class="section" id="honors" aria-labelledby="honors-heading">
+        <div class="container">
+          <div class="section-header reveal">
+            <div>
+              <span class="eyebrow">04 · Distinction</span>
+              <h2 class="section-title" id="honors-heading">
+                Achievements &amp; <em>Certifications</em>
+              </h2>
+            </div>
+            <p class="section-aside">
+              Verified competitive engineering performance and industry-backed generative AI credentials.
+            </p>
+          </div>
+
+          <div class="honors-grid">
+            <article class="honor-card honor-card--featured reveal">
+              <span class="honor-card__badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <path d="M8 21h8M12 17v4M7 4h10l-1 7a4 4 0 0 1-8 0L7 4z"></path>
+                  <path d="M7 6H4a2 2 0 0 0 0 4h3M17 6h3a2 2 0 0 1 0 4h-3"></path>
+                </svg>
+                <span>Winner · 1st Position</span>
+              </span>
+              <h3 class="honor-card__title">Smart India Hackathon (SIH) Internal Hackathon</h3>
+              <p class="honor-card__issuer">College-Level First Position</p>
+            </article>
+
+            <article class="honor-card reveal">
+              <span class="honor-card__badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <circle cx="12" cy="9" r="6"></circle>
+                  <path d="M9 14.5L7 22l5-2.5L17 22l-2-7.5"></path>
+                </svg>
+                <span>Certification</span>
+              </span>
+              <h3 class="honor-card__title">Generative AI Foundations Certificate Program</h3>
+              <p class="honor-card__issuer">Microsoft &amp; upGrad</p>
+            </article>
+
+            <article class="honor-card reveal">
+              <span class="honor-card__badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                  <circle cx="12" cy="9" r="6"></circle>
+                  <path d="M9 14.5L7 22l5-2.5L17 22l-2-7.5"></path>
+                </svg>
+                <span>Certification</span>
+              </span>
+              <h3 class="honor-card__title">AI for All Program</h3>
+              <p class="honor-card__issuer">Intel &amp; Digital India</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 05 · Contact & Colophon -->
+      <section class="section" id="contact" aria-labelledby="contact-heading">
+        <div class="container contact-spread">
+          <div class="reveal">
+            <span class="eyebrow">05 · Correspondence</span>
+            <h2 class="contact-spread__lead" id="contact-heading">
+              Let us build something <em>enduring &amp; intelligent.</em>
+            </h2>
+            <p class="contact-spread__note">
+              Possesses strong English communication and collaborative skills, eager to contribute to technical, software engineering, and AI-focused initiatives.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="mailto:manasvi78044@gmail.com">Send Email</a>
+              <button type="button" class="btn btn--outline" data-copy-email>Copy Email Address</button>
+            </div>
+          </div>
+
+          <div class="contact-list reveal" aria-label="Direct contact channels">
+            <div class="contact-row">
+              <span class="contact-row__label">Email</span>
+              <div style="display:flex;align-items:center;gap:0.65rem;">
+                <a class="contact-row__value" href="mailto:manasvi78044@gmail.com">manasvi78044@gmail.com</a>
+                <button type="button" class="mini-copy-btn" data-copy-email>Copy</button>
+              </div>
+            </div>
+
+            <div class="contact-row">
+              <span class="contact-row__label">Telephone</span>
+              <a class="contact-row__value" href="tel:+919699277161">+91 96992 77161</a>
+            </div>
+
+            <div class="contact-row">
+              <span class="contact-row__label">LinkedIn</span>
+              <a
+                class="contact-row__value"
+                href="https://www.linkedin.com/in/manasvi-patil-667361321"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>linkedin.com/in/manasvi-patil-667361321</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+
+            <div class="contact-row">
+              <span class="contact-row__label">GitHub</span>
+              <a
+                class="contact-row__value"
+                href="https://github.com/patilmanasvi329-lab"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>github.com/patilmanasvi329-lab</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container site-footer">
+      <span>Manasvi Patil · Portfolio Monograph</span>
+      <span>MCA (Pursuing) · AI/ML &amp; Data Science</span>
+    </footer>
+  </div>
+
+  <!-- Project Monograph Modal -->
+  <dialog class="editorial-dialog" id="monograph-dialog" aria-labelledby="monograph-title">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <span class="eyebrow" id="monograph-kicker">FOLIO 01</span>
+        <button type="button" class="icon-btn" id="monograph-close" aria-label="Close monograph">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="dialog-body">
+        <h3 class="monograph-title" id="monograph-title">Project Title</h3>
+        <p class="monograph-sub" id="monograph-sub">Project Subtitle</p>
+
+        <p id="monograph-overview" style="margin:0;color:var(--ink-secondary);"></p>
+
+        <div class="monograph-section-label">System Architecture Flow</div>
+        <div class="blueprint-strip" id="monograph-blueprint"></div>
+
+        <div class="monograph-section-label">Engineered Highlights</div>
+        <ul class="project-card__bullets" id="monograph-highlights"></ul>
+
+        <div class="monograph-section-label">Technology Stack</div>
+        <div class="tag-row" id="monograph-stack"></div>
+      </div>
+
+      <div class="dialog-footer">
+        <button type="button" class="pill-btn" id="monograph-prev">← Previous</button>
+        <span id="monograph-counter" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--ink-muted);">01 / 04</span>
+        <button type="button" class="pill-btn" id="monograph-next">Next →</button>
+      </div>
     </div>
+  </dialog>
 
-    <!-- Terminal Logic -->
-    <script>
-        const input = document.getElementById('cmd');
-        const outputArea = document.getElementById('output-area');
-        const terminalBody = document.getElementById('terminal-body');
+  <!-- Atelier Concierge (⌘K Command Palette) -->
+  <dialog class="editorial-dialog concierge-dialog" id="concierge-dialog" aria-labelledby="concierge-title">
+    <div class="dialog-shell">
+      <div class="dialog-header">
+        <span class="eyebrow" id="concierge-title">Atelier Concierge · Quick Index</span>
+        <button type="button" class="icon-btn" id="concierge-close" aria-label="Close Atelier Concierge">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
 
-        const commands = {
-            'help': 'Available commands: about, skills, projects, clear',
-            'about': 'Hi, I am Manasvi. I recently completed my BCA and am currently in my 1st year of MCA. I bridge software engineering with AI and data science.',
-            'skills': 'Core Skills:\n- Python & C++\n- AI Design & Presentation Tools\n- Problem Solving',
-            'projects': 'Loading projects...\n1. Smart Digital Wardrobe\n2. AI & Robotics Camp Curriculum\n3. Cybersecurity PGP Encryption\n4. Data Science Qualifier',
-        };
+      <div class="concierge-input-row">
+        <span class="concierge-prompt" aria-hidden="true">›</span>
+        <input
+          type="text"
+          id="concierge-input"
+          class="concierge-input"
+          placeholder="Type a command (about, skills, projects, experience, contact, theme)..."
+          autocomplete="off"
+          aria-label="Command input"
+        >
+      </div>
 
-        input.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                const cmdVal = input.value.trim().toLowerCase();
-                if (cmdVal) {
-                    // Echo command
-                    const echo = document.createElement('div');
-                    echo.className = 'terminal-line';
-                    echo.innerHTML = `<span class="prompt">visitor@portfolio:~$</span> ${cmdVal}`;
-                    outputArea.appendChild(echo);
+      <div class="concierge-chips" aria-label="Quick prompts">
+        <button type="button" class="concierge-chip" data-cmd="about">About</button>
+        <button type="button" class="concierge-chip" data-cmd="experience">Experience</button>
+        <button type="button" class="concierge-chip" data-cmd="projects">Projects</button>
+        <button type="button" class="concierge-chip" data-cmd="skills">Skills</button>
+        <button type="button" class="concierge-chip" data-cmd="achievements">Honors</button>
+        <button type="button" class="concierge-chip" data-cmd="copy">Copy Email</button>
+        <button type="button" class="concierge-chip" data-cmd="theme">Toggle Edition</button>
+      </div>
 
-                    // Handle command
-                    if (cmdVal === 'clear') {
-                        outputArea.innerHTML = '';
-                    } else {
-                        const response = document.createElement('div');
-                        response.className = 'terminal-output';
-                        response.innerText = commands[cmdVal] || `Command not found: ${cmdVal}. Type 'help' for a list of commands.`;
-                        outputArea.appendChild(response);
-                    }
-                }
-                input.value = '';
-                terminalBody.scrollTop = terminalBody.scrollHeight;
-            }
-        });
+      <div class="concierge-log" id="concierge-log" aria-live="polite">
+        <div class="concierge-entry">
+          <div class="concierge-entry__cmd">› welcome</div>
+          <div class="concierge-entry__res">Atelier Index ready. Select a topic above or type 'help' and press Enter.</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
 
-        // Ensure clicking terminal focuses input
-        terminalBody.addEventListener('click', () => {
-            input.focus();
-        });
-    </script>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
